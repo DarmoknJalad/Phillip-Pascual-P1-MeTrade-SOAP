@@ -1,4 +1,4 @@
-package com.phillippascual.web;
+package com.phillippascual.api;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -6,12 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
-import javax.jws.WebMethod;
-import javax.jws.WebService;
-
-@WebService
-public class StockPriceWS {
-	@WebMethod
+public class APIClient {
 	public static String retrieveStockPrice(String ticker) {
 		System.setProperty("http.agent", "Chrome");
 		try {
@@ -22,7 +17,11 @@ public class StockPriceWS {
 			InputStream input = conn.getInputStream();
 			@SuppressWarnings("resource")
 			Scanner scan = new Scanner(input);
-			return scan.nextLine();
+			String output = "";
+			while (scan.hasNext()) {
+				output += scan.nextLine();
+			}
+			return output;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
