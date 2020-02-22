@@ -8,7 +8,7 @@ import com.phillippascual.api.APIClient;
 @WebService
 public class StockPriceWS {
 	@WebMethod
-	public String getStockPrice(String ticker) {
+	public double getStockPrice(String ticker) {
 		return APIClient.retrieveStockPrice(ticker);
 	}
 	
