@@ -11,6 +11,14 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class APIClient {
+	
+	/**
+	 * The retrieveStockPrice() method takes in one parameter, a String.  It then creates a URL query, appending that
+	 * String parameter to the end of the URL, and then opens a connection.  This connection leads to the Mulesoft
+	 * application flow that accesses the external API which retrieves the stock price.  This external API returns a
+	 * JSON, which the flow converts to a String and passes back to this method.  That JSON string is then parsed for
+	 * the most current stock price, which it then returns as a double.
+	 */
 	public static double retrieveStockPrice(String ticker) {
 		System.setProperty("http.agent", "Chrome");
 		try {
